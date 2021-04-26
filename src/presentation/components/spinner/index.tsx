@@ -1,14 +1,15 @@
-import React from 'react';
-import Styles from './styles.scss';
+import React from "react";
 
-type Props = React.HTMLAttributes<HTMLElement>
+import Styles from "./styles.scss";
+
+type Props = React.HTMLAttributes<HTMLElement>;
 
 const Spinner: React.FC<Props> = (props) => {
-  return (
-    <div {...props} className={[Styles.spinner, props.className].join(' ')}>
-      <div /> <div /> <div /> <div />
-    </div>
-  )
-}
+	return (
+		<div {...props} className={[Styles.spinner, props.className].join(" ")}>
+			<div /> <div /> <div /> <div />
+		</div>
+	);
+};
 
 export default Spinner;
