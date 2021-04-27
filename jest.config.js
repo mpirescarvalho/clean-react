@@ -6,7 +6,10 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
-  transform: { '.*\\.(ts|tsx)$': 'ts-jest' },
+  transform: { 
+    '.*\\.(ts|tsx)$': 'ts-jest',
+    "^.+\\.svg$": "jest-transform-stub"
+   },
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1',
     '\\.scss$': 'identity-obj-proxy'
