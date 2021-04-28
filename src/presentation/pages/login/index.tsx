@@ -15,8 +15,17 @@ type LoginProps = {
 	validation: Validation;
 };
 
+type LoginState = {
+	isLoading: boolean;
+	email: string;
+	password: string;
+	emailError: string | null;
+	passwordError: string | null;
+	mainError: string;
+};
+
 const Login: React.FC<LoginProps> = ({ validation }) => {
-	const [state, setState] = useState({
+	const [state, setState] = useState<LoginState>({
 		isLoading: false,
 		email: "",
 		password: "",

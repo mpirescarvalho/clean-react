@@ -14,11 +14,11 @@ const Footer: React.FC<InputProps> = (props) => {
 	const error = state[`${props.name}Error`];
 
 	const getStatus = (): string => {
-		return "🔴";
+		return error ? "🔴" : "🟢";
 	};
 
 	const getTitle = (): string => {
-		return error;
+		return error || "Tudo certo!";
 	};
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
