@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Link, useHistory } from "react-router-dom";
 import {
 	LoginHeader,
 	Footer,
@@ -8,9 +8,9 @@ import {
 } from "@/presentation/components";
 import { Validation } from "@/presentation/protocols/validation";
 import Context from "@/presentation/contexts/form/form-context";
+import { Authentication } from "@/domain/usecases";
 
 import Styles from "./styles.scss";
-import { Authentication } from "@/domain/usecases";
 
 type LoginProps = {
 	validation: Validation;
@@ -36,6 +36,8 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }) => {
 		mainError: "",
 	});
 
+	const history = useHistory();
+
 	useEffect(() => {
 		setState({
 			...state,
@@ -56,6 +58,7 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }) => {
 				password: state.password,
 			});
 			localStorage.setItem("accessToken", account!.accessToken);
+			history.replace("/");
 		} catch (error) {
 			setState({
 				...state,
@@ -84,7 +87,9 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }) => {
 					>
 						Entrar
 					</button>
-					<span className={Styles.link}>Criar conta</span>
+					<Link data-testid="signup" to="/signup" className={Styles.link}>
+						Criar conta
+					</Link>
 
 					<FormStatus />
 				</form>
